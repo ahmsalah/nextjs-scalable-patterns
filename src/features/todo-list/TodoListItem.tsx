@@ -3,6 +3,7 @@ import { useTodoListStore } from "./useTodoListStore";
 import { memo, useCallback } from "react";
 import { Trash } from "iconsax-react";
 import { TodoListItemForm } from "./TodoListItemForm";
+import { toast } from "@/lib/toast";
 
 type TodoListItemProps = { id: string };
 
@@ -15,6 +16,7 @@ function TodoListItemBase({ id }: TodoListItemProps) {
 
   const onRemove = useCallback(() => {
     useTodoListStore.getState().removeTask(id);
+    toast("Task removed");
   }, [id]);
 
   return (

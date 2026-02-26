@@ -1,3 +1,4 @@
+import { Toaster } from "@/lib/toast";
 import { ThemeRegistry } from "@/theme";
 import type { Metadata } from "next";
 
@@ -14,7 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeRegistry>{children}</ThemeRegistry>
+        <ThemeRegistry>
+          <Toaster durationMs={3000} maxVisibleToasts={4} isDismissible={false} />
+          {children}
+        </ThemeRegistry>
       </body>
     </html>
   );

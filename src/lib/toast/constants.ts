@@ -1,0 +1,5 @@
+export const DEFAULT_TOAST_DURATION_MS = 3000;
+export const DEFAULT_MAX_VISIBLE_TOASTS = 3;
+export const DEFAULT_IS_DISMISSIBLE = false;
+export const TOAST_TRANSITION_DURATION_MS = 300;
+export const TOAST_MIN_WIDTH = 340;

@@ -5,3 +5,4 @@ export * from "./typography";
 export * from "./icon";
 export * from "./inputs";
 export * from "./card";
+export * from "./alert";
