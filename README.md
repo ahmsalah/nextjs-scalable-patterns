@@ -1,6 +1,6 @@
 # Next.js Scalable Architecture Demo
 
-A production-ready Next.js boilerplate that demonstrates **scalable architecture and patterns** through a simple Todo List app. The goal is not the todo list itself — it's the patterns, structure, and conventions that scale to large applications.
+A production-ready Next.js boilerplate that demonstrates **scalable architecture and patterns** through a simple Todo List app. It also includes a lightweight, imperative **toast notification system** built on Zustand. The goal is not the features themselves — it's the patterns, structure, and conventions that scale to large applications.
 
 ## Tech Stack
 
@@ -31,6 +31,11 @@ src/
 │       ├── TodoListItem.tsx
 │       ├── TodoListItemForm.tsx
 │       └── useTodoListStore.ts
+├── lib/                    # Standalone utilities & micro-libraries
+│   └── toast/              # Toast notification system
+│       ├── Toaster.tsx
+│       ├── useToastStore.ts
+│       └── index.ts
 └── theme/                  # MUI theme configuration
     ├── palette.ts
     ├── typography.ts
@@ -169,6 +174,36 @@ All UI components are thin, typed wrappers around MUI, extended with project-spe
 - **`Form`** — A `Flex` rendered as a `<form>` element with `noValidate`.
 
 All components are type-safe with constrained palette keys (`PaletteKey`) to prevent invalid color values at compile time.
+
+---
+
+## Toast Notifications
+
+A lightweight, imperative toast system built on Zustand — no context providers or hooks required at the call site.
+
+Mount the `Toaster` component once at the app root:
+
+```tsx
+import { Toaster } from "@/lib/toast";
+
+<Toaster durationMs={5000} maxVisibleToasts={3} isDismissible />;
+```
+
+Then trigger toasts from anywhere:
+
+```ts
+import { toast } from "@/lib/toast";
+
+toast("File saved");
+
+toast("Something went wrong", {
+  variant: "error",
+  description: "Please try again later.",
+  isDismissible: true,
+});
+```
+
+`Toaster` accepts optional props for auto-dismiss duration, max visible toasts, and a default dismissible flag. Each `toast()` call can override the dismissible default and set a `variant` (`"error"`, `"warning"`, `"info"`, `"success"`) along with an optional `description`.
 
 ---
 
