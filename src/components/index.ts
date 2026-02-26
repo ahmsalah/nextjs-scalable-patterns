@@ -4,3 +4,4 @@ export * from "./inputs";
 export * from "./typography";
 export * from "./icon";
 export * from "./inputs";
+export * from "./card";

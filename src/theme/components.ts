@@ -8,10 +8,13 @@
 import type { Components } from "@mui/material/styles";
 
 export const components: Components = {
-  // Name of the component
+  MuiButtonBase: {
+    defaultProps: {
+      disableRipple: true,
+    },
+  },
   MuiButton: {
     styleOverrides: {
-      // Name of the slot/rule
       root: {
         fontWeight: "500",
         borderRadius: "10px",

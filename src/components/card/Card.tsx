@@ -1,4 +1,5 @@
 import { Flex, type FlexProps } from "../box/Flex";
+import { FlexButton } from "../box/FlexButton";
 
 export type CardProps = FlexProps & {
   variant?: "transparent" | "outlined" | "borderless" | "elevated";
@@ -12,12 +13,13 @@ export function Card({
   border,
   borderColor,
   color,
-  borderRadius = 2,
+  borderRadius = 2.5,
   ...props
 }: CardProps) {
   return (
     <Flex
       column
+      component={props.onClick ? FlexButton : undefined}
       {...props}
       sx={[
         variant === "elevated" && {
